@@ -84,24 +84,20 @@ export class CompanyController {
     return this.companyService.addOrders(id, orderId);
   }
 
-  // @ApiOperation({ summary: 'Создать новую компанию' })
-  // @ApiResponse({ status: 301, type: Company })
-  // @Post('create')
-  // @UseInterceptors(
-  //   FileFieldsInterceptor([
-  //     { name: 'image', maxCount: 1 },
-  //   ]),
-  // )
-  // create(@UploadedFiles() files, @Body() dto: CompanyDto) {
-  //   const { image } = files;
-  //   return this.companyService.create(dto, image[0]);
-  // }
-  @ApiOperation({ summary: 'Создать новую компанию.' })
+  @ApiOperation({ summary: 'Создать новую компанию' })
   @ApiResponse({ status: 301, type: Company })
   @Post('create')
-  createUser(@Body() dto: CompanyDto) {
-    return this.companyService.create(dto);
+  @UseInterceptors(FileFieldsInterceptor([{ name: 'image', maxCount: 1 }]))
+  create(@UploadedFiles() files, @Body() dto: CompanyDto) {
+    const { image } = files;
+    return this.companyService.create(dto, image[0]);
   }
+  // @ApiOperation({ summary: 'Создать новую компанию.' })
+  // @ApiResponse({ status: 301, type: Company })
+  // @Post('create')
+  // createUser(@Body() dto: CompanyDto) {
+  //   return this.companyService.create(dto);
+  // }
 
   @ApiOperation({ summary: 'Удоление по Id.' })
   @ApiResponse({ status: 200, type: Company })

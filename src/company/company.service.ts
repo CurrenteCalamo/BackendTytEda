@@ -10,7 +10,7 @@ export class CompanyService {
   constructor(
     @InjectModel(Company.name) private companyModel: Model<CompanyDocument>,
     private fileService: FileService,
-  ) { }
+  ) {}
 
   async addOrders(id, order) {
     const company = await this.companyModel.findById(id);
@@ -18,7 +18,6 @@ export class CompanyService {
     company.save();
     return company;
   }
-
 
   async addUser(id, userId) {
     const company = await this.companyModel.findById(id);
@@ -42,13 +41,10 @@ export class CompanyService {
     return companys;
   }
 
-
-
   async getOne(id) {
     const company = this.companyModel.findById(id);
     return company;
   }
-
 
   async delete(id) {
     try {
@@ -59,17 +55,17 @@ export class CompanyService {
     }
   }
 
-  // async create(dto: CompanyDto, image) {
-  //   const imagePath = this.fileService.createFile(FileType.IMAGE, image);
-  //   const company = await this.companyModel.create({
-  //     ...dto,
-  //     image: imagePath,
-  //   });
-  //   return company;
-  // }
-
-  async create(dto: CompanyDto) {
-    const company = await this.companyModel.create(dto);
+  async create(dto: CompanyDto, image) {
+    const imagePath = this.fileService.createFile(FileType.IMAGE, image);
+    const company = await this.companyModel.create({
+      ...dto,
+      image: imagePath,
+    });
     return company;
   }
+
+  // async create(dto: CompanyDto) {
+  //   const company = await this.companyModel.create(dto);
+  //   return company;
+  // }
 }
