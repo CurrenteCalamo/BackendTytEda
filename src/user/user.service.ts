@@ -25,17 +25,13 @@ export class UserService {
     return await this.userModel.findOne({ username: username });
   }
 
-  async create(dto: UserDto) {
-    const consdition1 = await this.userModel.findOne({
+  async createUser(dto: UserDto) {
+    const consdition = await this.userModel.findOne({
       email: dto.email,
       include: { all: true },
     });
-    const consdition2 = await this.userModel.findOne({
-      name: dto.username,
-      include: { all: true },
-    });
-    if (consdition1 && consdition2) {
-      throw new HttpException('Not valuble email', HttpStatus.BAD_REQUEST);
+    if (consdition) {
+      throw new HttpException('not valuble email', HttpStatus.BAD_REQUEST);
     }
     const hastpassword = await bcrypt.hash(dto.password, 10);
     const user = await this.userModel.create({

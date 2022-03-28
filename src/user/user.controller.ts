@@ -41,7 +41,7 @@ export class UserController {
   @ApiResponse({ status: 300, type: User })
   @Post('create')
   createUser(@Body() dto: UserDto) {
-    return this.userService.create(dto);
+    return this.userService.createUser(dto);
   }
 
   @ApiOperation({ summary: 'Поиск пользователя по Id.' })
