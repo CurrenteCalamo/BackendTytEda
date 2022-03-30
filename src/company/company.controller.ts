@@ -84,6 +84,13 @@ export class CompanyController {
     return this.companyService.addOrders(id, orderId);
   }
 
+  @ApiOperation({ summary: 'Добавить заказ.' })
+  @ApiResponse({ status: 301, type: Company })
+  @Post('addCreator')
+  addCreator(@Body() dto: any) {
+    return this.companyService.addCreator(dto);
+  }
+
   @ApiOperation({ summary: 'Создать новую компанию' })
   @ApiResponse({ status: 301, type: Company })
   @Post('create')

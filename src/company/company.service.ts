@@ -19,6 +19,12 @@ export class CompanyService {
     return company;
   }
 
+  async addCreator(dto) {
+    const company = await this.companyModel.findById(dto.id);
+    company.creator = dto.creator;
+    company.save();
+    return company;
+  }
   async addUser(id, userId) {
     const company = await this.companyModel.findById(id);
     company.users.push(userId);
