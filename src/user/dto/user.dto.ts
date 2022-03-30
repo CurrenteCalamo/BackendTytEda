@@ -13,6 +13,13 @@ export class UserDto {
   })
   readonly email: string;
 
+  
+   @ApiProperty({
+    example: 'vladimir Wrode',
+    description: 'bio.',
+  })
+  readonly bio: string;
+  
   @ApiProperty({
     example: 'supername1',
     description: 'Не зашифрованный пароль пользователя.',
