@@ -18,6 +18,9 @@ export class User {
   })
   @Prop()
   email: string;
+  
+  @Prop()
+  bio: string;
 
   @ApiProperty({
     example: '$2b$10$8jUPv1dYFt54r9KlYDlhsOwpg614Z2ellhzP2ktPWVntKSUdsrAUm',
