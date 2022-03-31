@@ -12,4 +12,7 @@ export class DishDto {
 
   @ApiProperty({ example: "icecream", description: 'тип блюда' })
   readonly type: string;
+  
+  @ApiProperty({ example: "1", description: 'first week' })
+  readonly week: string;
 }
