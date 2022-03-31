@@ -14,6 +14,10 @@ export class Dish {
   @Prop()
   image: string;
 
+   @ApiProperty({ example: "1 dish", description: 'первое блюдо' })
+  @Prop()
+  week: string;
+  
   @ApiProperty({ example: "самое вкусное", description: 'Описание блюда' })
   @Prop()
   text: string;
