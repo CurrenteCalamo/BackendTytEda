@@ -13,15 +13,15 @@ export class OrderController {
   @ApiResponse({ status: 200, type: Order })
   @Get()
   @ApiParam({
-    name: 'id',
-    description: 'id компании.',
+    name: 'count',
+    description: 'count количество пользователей.',
   })
   @ApiParam({
-    name: 'date',
-    description: 'date дата выдачи.',
+    name: 'offset',
+    description: 'offset номер страницы.',
   })
-  getAll(@Query('id') id: string, @Query('date') date: string) {
-    return this.orderService.getAll(id, date);
+  getAll(@Query('count') count: number, @Query('offset') offset: number) {
+    return this.orderService.getAll(count, offset);
   }
 
   @ApiOperation({ summary: 'Поиск по Id' })
