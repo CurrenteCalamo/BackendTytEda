@@ -30,14 +30,14 @@ export class OrderService {
     const order = this.orderModel.findById(id);
     return order;
   }
-
-  async getAll(id, date) {
-    const orders = await this.orderModel.find({
-      company: id,
-      date: date,
-    });
-    return orders;
+async getAll(count = 10, offset = 1) {
+    const company = await this.companyModel
+      .find()
+      .skip(Number(offset))
+      .limit(Number(count));
+    return company;
   }
+  
   async create(dto: OrderDto) {
     const order = await this.orderModel.create(dto);
     return order;
