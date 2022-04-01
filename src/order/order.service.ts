@@ -31,11 +31,11 @@ export class OrderService {
     return order;
   }
 async getAll(count = 10, offset = 1) {
-    const company = await this.companyModel
+    const order = await this.orderModel
       .find()
       .skip(Number(offset))
       .limit(Number(count));
-    return company;
+    return order;
   }
   
   async create(dto: OrderDto) {
